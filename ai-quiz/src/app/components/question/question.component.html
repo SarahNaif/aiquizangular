@@ -1,36 +1,25 @@
 <div class="p-6 mb-6">
     <div class="mb-6">
         <h5 class=" block mb-2 text-3xl antialiased font-extrabold leading-snug tracking-normal text-blue-gray-900">
-            1. What angular mean?
+          {{currentQuestionIndex+1}}. {{ question.question }}
         </h5>
     </div>
 
-    <div class="flex flex-col gap-4">
-        <div class="p-2 border-2 border-blue-200 bg-sky-50 rounded ">
-            <p class=" pl-2 block font-sans text-base antialiased font-semibold leading-relaxed text-inherit">
-                Angular is a platform and framework for building single-page
-            </p>
-        </div>
-        <div class="p-2 border-2 border-green-200 bg-green-50 rounded ">
-            <div class="flex items-center gap-2">
-                <p class="block font-sans text-base antialiased font-semibold leading-relaxed text-inherit">Angular is a platform and framework for building single-page </p>
-                <span><i class="fa-regular fa-circle-check text-green-500 mx-1 text-xl "></i></span>
-            </div>
-        </div>
+    <div class="flex flex-col gap-4 text-left">
 
-        <div class="p-2 border-2 border-red-200 bg-red-50 rounded ">
-            <div class="flex items-center gap-2">
-                <p class="block font-sans text-base antialiased font-semibold leading-relaxed text-inherit">Angular is a platform and framework for building single-page </p>
-                <span><i class="fa-regular fa-circle-xmark text-red-500 mx-1 text-xl "></i></span>
-            </div>
-        </div>
+    <button *ngFor="let answer of question.options" 
+    (click)="selectAnswer(answer)" 
+    [ngClass]="[getButtonClass(answer)]" 
+    [disabled]="isButtonDisabled(answer)"
+    class="p-2 border-2 border-blue-200 bg-sky-50 rounded" >
+    <div class="flex justify-between items-center gap-2">
+        <p class="pl-2 text-left block font-sans text-base antialiased font-semibold leading-relaxed text-inherit">
+            {{ answer }}
+        </p>
+        <span class="fa" [ngClass]="getIcon(answer)"></span>
+    </div>
 
-
-        <div class="p-2 border-2 border-blue-200 bg-sky-50 rounded ">
-            <p class=" pl-2 block font-sans text-base antialiased font-semibold leading-relaxed text-inherit">
-                Angular is a platform and framework for building single-page
-            </p>
-        </div>
+    </button>
 
     </div>          
 </div>

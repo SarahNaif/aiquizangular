@@ -3,23 +3,28 @@
 
     <div class="bg-blue-200 border border-2 border-blue-300  px-2 py-1 rounded-md flex flex-row gap-2 ">
         <h4 class="text-md text-blue-500 my-1 font-semibold">Time Left</h4>
-        <div class="bg-gray-800 p-1 px-1.5 rounded text-gray-200 ">9:00</div>
+        <div 
+        [ngClass]=" timeLeft <= 60 ? 'bg-red-500'  : (timeLeft <= 30 ? 'bg-yellow-500' : '') "
+        class="bg-gray-800 p-1 px-1.5 rounded text-gray-200 ">{{ getFormattedTime() }}</div>
     </div>
     
 </div>
+
 <div class="h-1.5 rounded-r-lg bg-blue-600 w-full -mt-1 drop-shadow-lg"></div>
 
 
-<app-question></app-question>
+<app-question [question]="questions[currentQuestionIndex]" [currentQuestionIndex]="currentQuestionIndex"   [totalQuestions]="totalQuestions"  ></app-question>
 
 <div class="flex justify-between items-center p-6 border-t-2 ">
     <div> 
         <p>
-           <span class="font-semibold"> 1</span> of <span class="font-semibold">5</span> Questions
+           <span class="font-semibold"> {{ currentQuestionIndex + 1 }}</span> of <span class="font-semibold">{{ totalQuestions }}</span> Questions
         </p>
     </div>
 
     <button
+    (click)="nextQuestion()"
+    
         class="align-middle select-none  font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-md bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
         type="button">
         Next Que
