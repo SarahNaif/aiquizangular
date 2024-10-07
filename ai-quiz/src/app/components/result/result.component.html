@@ -1,0 +1,19 @@
+<div class="p-6 flex justify-center content-center h-[35rem]">
+
+    <div class="my-12  p-6 px-11">
+        <div class="text-center flex flex-col gap-8 ">
+            <h3 class="text-2xl capitalize font-bold text-gray-500"> Your Score</h3>
+            <h3 class="mb-4 text-9xl capitalize font-bold" [ngClass]="{'text-red-500': score < 4, 'text-green-500': score >= 4}"> {{score}}/5</h3>
+            <p class="text-md text-left">Congratulations! We did it! It was an exciting journey, and I truly enjoyed working on this project. 👏🏻 claps to all of us!. Thank you again!</p>
+           
+          <button
+          class="w-fit  mx-auto select-none font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-md bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+          type="button"
+          (click)="restartQuiz()"
+          >
+          <i class="fa-solid fa-rotate-right mr-1 pr-1"></i>Re-Start
+      </button>
+        </div>
+    </div>
+   
+</div>

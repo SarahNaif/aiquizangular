@@ -5,16 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { QuestionComponent } from './components/question/question.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { StoreModule } from '@ngrx/store';
+import { quizReducer } from './store/quiz.reducer';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
-    QuestionComponent
+    QuestionComponent,
+    WelcomeComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({ quiz: quizReducer }),
   ],
   providers: [
     provideClientHydration()
