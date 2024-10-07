@@ -65,7 +65,9 @@ export class QuizComponent implements OnInit, OnDestroy {
         this.timeLeft--;
       } else {
         clearInterval(this.timer);
-        this.router.navigate(['/result'], { state: { score: this.score } }) // Move to the next question or end quiz when time runs out
+        this.router.navigate(['/result'], { state: { score: this.score } })
+         // Move to the next question or end quiz when time runs out
+         clearInterval(this.timer);
       }
     }, 1000);
   }
@@ -75,6 +77,7 @@ export class QuizComponent implements OnInit, OnDestroy {
     if (this.currentQuestionIndex + 1 === this.totalQuestions) {
      
       this.router.navigate(['/result'], { state: { score: this.score } });
+      clearInterval(this.timer);
     } else {
       this.store.dispatch(nextQuestion());
      
