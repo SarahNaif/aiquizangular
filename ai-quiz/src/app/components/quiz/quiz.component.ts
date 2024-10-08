@@ -17,7 +17,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   questions: any[] = [];
   subscriptions: Subscription = new Subscription();
   score: number = 0;
-  timeLeft: number = 180;  // 9 minutes in seconds
+  timeLeft: number = 10;  // 9 minutes in seconds
   timer: any;
 
 
@@ -67,7 +67,6 @@ export class QuizComponent implements OnInit, OnDestroy {
         clearInterval(this.timer);
         this.router.navigate(['/result'], { state: { score: this.score } })
          // Move to the next question or end quiz when time runs out
-         clearInterval(this.timer);
       }
     }, 1000);
   }
@@ -85,8 +84,10 @@ export class QuizComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    clearInterval(this.timer);
-    this.subscriptions.unsubscribe(); // Clean up subscriptions
+    if (this.timer) {
+      clearInterval(this.timer); // Clear the timer if it exists
+    }
+    this.subscriptions.unsubscribe(); 
   }
   getFormattedTime(): string {
     const minutes = Math.floor(this.timeLeft / 60);

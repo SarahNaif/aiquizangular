@@ -4,7 +4,7 @@
     <div class="bg-blue-200 border border-2 border-blue-300  px-2 py-1 rounded-md flex flex-row gap-2 ">
         <h4 class="text-md text-blue-500 my-1 font-semibold">Time Left</h4>
         <div 
-        [ngClass]=" timeLeft <= 60 ? 'bg-red-500'  : (timeLeft <= 30 ? 'bg-yellow-500' : '') "
+        [ngClass]="timeLeft <= 5 ? 'bg-red-500' : (timeLeft <= 8 ? 'bg-yellow-500' : '')"
         class="bg-gray-800 p-1 px-1.5 rounded text-gray-200 ">{{ getFormattedTime() }}</div>
     </div>
     
